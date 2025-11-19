@@ -38,7 +38,7 @@ class User:
         self.user_state = state
         return self.user_state
 
-    def set_uuid(self, uuid: UUID) -> UUID:
+    def set_user_uuid(self, uuid: UUID) -> UUID:
         self.user_uuid = uuid
         return self.user_uuid
 
