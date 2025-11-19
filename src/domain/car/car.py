@@ -19,7 +19,7 @@ class Car:
     offer_uuid: Optional[UUID] = None
 
 
-    def set_uuid(self, uuid: UUID) -> UUID:
+    def set_car_uuid(self, uuid: UUID) -> UUID:
         self.car_uuid = uuid
         return self.car_uuid
 
@@ -42,3 +42,13 @@ class Car:
     def set_offer_uuid(self, offer_uuid: UUID) -> UUID:
         self.offer_uuid = offer_uuid
         return self.offer_uuid
+
+    def __post_init__(self) -> None:
+        self.updated_at = self.set_updated_at(self.updated_at)
+        self.created_at = self.set_created_at(self.created_at)
+
+        self.offer_uuid = self.set_offer_uuid(self.offer_uuid)
+        self.car_uuid = self.set_car_uuid(self.car_uuid)
+
+        self.car_status = self.set_car_status(self.car_status)
+        self.car_model = self.set_car_model(self.car_model)
