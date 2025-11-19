@@ -8,10 +8,6 @@ from .exceptions import (UsernameFormatInvalid,
                          PasswordFormatInvalid,
                          EmailFormatInvalid)
 
-# Определить поля и их типы - Done
-# Определить бизнес правила - Done
-# Опредилить исключения     - Done
-
 @dataclass
 class User:
     user_uuid: UUID
