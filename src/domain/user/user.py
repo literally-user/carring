@@ -6,11 +6,16 @@ import re
 
 from .exceptions import (UsernameFormatInvalid,
                          PasswordFormatInvalid,
-                         EmailFormatInvalid)
+                         EmailFormatInvalid,)
+
+from .enumerations import (UserPrivilege,
+                           UserState,)
 
 @dataclass
 class User:
     user_uuid: UUID
+    user_privilege: UserPrivilege
+    user_state: UserState
 
     first_name: str
     last_name: str
@@ -24,6 +29,14 @@ class User:
 
     offer_uuid: Optional[UUID] = None
 
+
+    def set_user_privilege(self, privilege: UserPrivilege) -> UserPrivilege:
+        self.user_privilege = privilege
+        return self.user_privilege
+
+    def set_user_state(self, state: UserState) -> UserState:
+        self.user_state = state
+        return self.user_state
 
     def set_uuid(self, uuid: UUID) -> UUID:
         self.user_uuid = uuid
