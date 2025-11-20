@@ -11,7 +11,9 @@ class CreateCarInteractor:
     def execute(self, car: CarDTO) -> Car:
         car_model = Car(
             car_uuid=uuid4(),
+
             car_model=car.car_model,
+            car_number=car.car_number,
             car_status=CarStatus.FREE,
 
             offer_uuid=None,

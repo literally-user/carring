@@ -2,14 +2,17 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
+import re
 
 from .enumerations import CarStatus
+from .exceptions import PlateNumberFormatInvalid
 
 @dataclass
 class Car:
     car_uuid: UUID
 
     car_model: str
+    car_number: str
 
     car_status: CarStatus
 
@@ -26,6 +29,19 @@ class Car:
     def set_car_model(self, model: str) -> str:
         self.car_model = model
         return self.car_model
+
+    def set_car_number(self, number: str) -> str:
+        RUS_LETTERS = "АВЕКМНОРСТУХ"
+
+        pattern = re.compile(
+            rf"^[{RUS_LETTERS}]\d{{3}}[{RUS_LETTERS}]{{2}}\s?\d{{2,3}}$"
+        )
+
+        if pattern.match(number):
+            self.car_number = number
+            return self.car_number
+
+        raise PlateNumberFormatInvalid("Invalid plate number format")
 
     def set_car_status(self, state: CarStatus) -> CarStatus:
         self.car_status = state
@@ -52,3 +68,4 @@ class Car:
 
         self.car_status = self.set_car_status(self.car_status)
         self.car_model = self.set_car_model(self.car_model)
+        self.car_number = self.set_car_number(self.car_number)
