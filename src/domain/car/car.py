@@ -5,7 +5,8 @@ from uuid import UUID
 import re
 
 from .enumerations import CarStatus
-from .exceptions import PlateNumberFormatInvalid
+from .exceptions import (PlateNumberFormatInvalid,
+                         CarStatusInvalid)
 
 @dataclass
 class Car:
@@ -43,8 +44,11 @@ class Car:
 
         raise PlateNumberFormatInvalid("Invalid plate number format")
 
-    def set_car_status(self, state: CarStatus) -> CarStatus:
-        self.car_status = state
+    def set_car_status(self, status: CarStatus) -> CarStatus:
+        if status != CarStatus.FREE:
+            raise CarStatusInvalid("The car must be created with the status FREE only.")
+
+        self.car_status = status
         return self.car_status
 
     def set_created_at(self, created_at: datetime) -> datetime:

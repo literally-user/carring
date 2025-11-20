@@ -6,7 +6,10 @@ import re
 
 from .exceptions import (UsernameFormatInvalid,
                          PasswordFormatInvalid,
-                         EmailFormatInvalid,)
+                         EmailFormatInvalid,
+                         UserStateInvalid,
+                         FirstNameFormatInvalid,
+                         LastNameFormatInvalid)
 
 from .enumerations import (UserPrivilege,
                            UserState,)
@@ -35,6 +38,8 @@ class User:
         return self.user_privilege
 
     def set_user_state(self, state: UserState) -> UserState:
+        if state != UserState.ACTIVE:
+            raise UserStateInvalid("The user must be created with the state ACTIVE only.")
         self.user_state = state
         return self.user_state
 
@@ -43,10 +48,14 @@ class User:
         return self.user_uuid
 
     def set_first_name(self, first_name: str) -> str:
+        if len(first_name) < 3 or len(first_name) > 12:
+            raise FirstNameFormatInvalid("The first name must be at least 3 and less than 12 characters long.")
         self.first_name = first_name
         return self.first_name
 
     def set_last_name(self, last_name: str) -> str:
+        if len(last_name) < 3 or len(last_name) > 12:
+            raise LastNameFormatInvalid("The last name must be at least 3 and less than 12 characters long.")
         self.last_name = last_name
         return self.last_name
 
@@ -69,7 +78,7 @@ class User:
         return self.password
 
     def set_email(self, email: str) -> str:
-        if not re.search(r'/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;', email):
+        if not re.search( r'^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$', email):
             raise EmailFormatInvalid("Email address format is invalid")
         self.email = email
         return self.email
