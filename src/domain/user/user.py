@@ -17,8 +17,6 @@ class User:
     user_privilege: UserPrivilege
     user_state: UserState
 
-    offer_uuid: Optional[UUID]
-
     first_name: str
     last_name: str
 
