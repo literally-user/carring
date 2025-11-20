@@ -1,4 +1,5 @@
-from .user import User, UserPrivilege, UserState
+from .user import User
+from .enumerations import UserPrivilege, UserState
 
 __all__ = [
     'User',
