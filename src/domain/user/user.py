@@ -88,7 +88,7 @@ class User:
 
 
     def __post_init__(self):
-        self.user_uuid = self.set_uuid(self.user_uuid)
+        self.user_uuid = self.set_user_uuid(self.user_uuid)
         self.first_name = self.set_first_name(self.first_name)
         self.last_name = self.set_last_name(self.last_name)
         self.username = self.set_username(self.username)
