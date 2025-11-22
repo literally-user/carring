@@ -7,7 +7,6 @@ import re
 from .enumerations import CarStatus
 from .exceptions import (PlateNumberFormatInvalid,
                          CarStatusInvalid)
-from ..offer import Offer
 
 
 @dataclass

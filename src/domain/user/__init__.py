@@ -15,6 +15,7 @@ __all__ = [
     'UserPrivilege',
     'UserState',
 
+    'UserStateInvalid',
     'UsernameFormatInvalid',
     'PasswordFormatInvalid',
     'EmailFormatInvalid',
