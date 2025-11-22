@@ -66,7 +66,7 @@ class Car:
         self.updated_at = updated_at
         return self.updated_at
 
-    def _set_offer_uuid(self, offer_uuid: UUID | None) -> UUID:
+    def _set_offer_uuid(self, offer_uuid: UUID | None) -> None | UUID:
         self.offer_uuid = offer_uuid
         return self.offer_uuid
 

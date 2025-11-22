@@ -2,10 +2,12 @@ from datetime import datetime, UTC
 from uuid import uuid4
 
 from src.domain.car import Car, CarStatus
+from src.application.common import Repository
 from .dto import CarDTO
 
+
 class CreateCarInteractor:
-    def __init__(self, repository) -> None:
+    def __init__(self, repository: Repository) -> None:
         self.repository = repository
 
     def execute(self, car: CarDTO) -> Car:
@@ -21,4 +23,6 @@ class CreateCarInteractor:
             created_at=datetime.now(UTC),
             updated_at=datetime.now(UTC),
         )
-        return self.repository.create(car_model)
+        self.repository.create(car_model)
+
+        return car_model

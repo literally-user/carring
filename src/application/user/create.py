@@ -1,11 +1,12 @@
 from datetime import datetime, UTC
 from uuid import uuid4
 
+from src.application.common import Repository
 from src.domain.user import User, UserPrivilege, UserState
 from .dto import UserDTO
 
 class CreateUserInteractor:
-    def __init__(self, repository) -> None:
+    def __init__(self, repository: Repository) -> None:
         self.repository = repository
 
     def execute(self, user: UserDTO) -> User:
@@ -27,4 +28,6 @@ class CreateUserInteractor:
             created_at=datetime.now(UTC),
             updated_at=datetime.now(UTC),
         )
-        return self.repository.create(user_model)
+
+        self.repository.create(user_model)
+        return user_model
