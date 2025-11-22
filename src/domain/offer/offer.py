@@ -21,7 +21,7 @@ class Offer:
         self._set_car_uuid(car_uuid)
         self._set_user_uuid(user_uuid)
 
-    def expire(self):
+    def expire(self) -> None:
         self._set_offer_status(OfferStatus.EXPIRED)
 
     def _set_created_at(self, created_at: datetime) -> datetime:

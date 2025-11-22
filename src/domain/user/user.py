@@ -96,12 +96,12 @@ class User:
         self.updated_at = updated_at
         return self.updated_at
 
-    def _set_offer_uuid(self, offer_uuid: UUID | None) -> UUID:
+    def _set_offer_uuid(self, offer_uuid: UUID | None) -> UUID | None:
         self.offer_uuid = offer_uuid
         return self.offer_uuid
 
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.user_uuid = self._set_user_uuid(self.user_uuid)
         self.first_name = self._set_first_name(self.first_name)
         self.last_name = self._set_last_name(self.last_name)
