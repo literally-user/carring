@@ -4,16 +4,17 @@ from uuid import uuid4, UUID
 from src.domain.offer import (Offer,
                               OfferStatus)
 
-from src.application.common import (UnitOfWork,
-                                    Repository)
+from src.adapters.storage import UnitOfWork
+from src.adapters.storage.user import UserRepository
+from src.adapters.storage.car import CarRepository
 
 from .exceptions import UnitsNotFoundError
 from .dto import OfferDTO
 
 class CreateOfferInteractor:
     def __init__(self, uow: UnitOfWork,
-                 user_repository: Repository,
-                 car_repository: Repository) -> None:
+                 user_repository: UserRepository,
+                 car_repository: CarRepository) -> None:
         self.uow = uow
         self.user_repository = user_repository
         self.car_repository = car_repository

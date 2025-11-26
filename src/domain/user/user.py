@@ -30,7 +30,7 @@ class User:
     created_at: datetime
     updated_at: datetime
 
-    offer_uuid: Optional[UUID] = None
+    offer_uuid: Optional[UUID]
 
     def attach_offer(self, offer: UUID) -> None:
         self._set_offer_uuid(offer)

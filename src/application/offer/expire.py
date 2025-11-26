@@ -2,11 +2,11 @@ from uuid import UUID
 
 from .exceptions import UnitsNotFoundError
 from src.domain.offer import Offer
-from src.application.common import Repository
+from src.adapters.storage.offer import OfferRepository
 
 
 class ExpireOfferInteractor:
-    def __init__(self, offer_repository: Repository) -> None:
+    def __init__(self, offer_repository: OfferRepository) -> None:
         self.offer_repository = offer_repository
 
     def execute(self, offer_uuid: UUID) -> Offer:
