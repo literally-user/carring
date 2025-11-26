@@ -1,8 +1,8 @@
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
-import re
 
 from .enumerations import CarStatus
 from .exceptions import (PlateNumberFormatInvalid,
@@ -29,15 +29,13 @@ class Car:
     def detach_offer(self) -> None:
         self._set_offer_uuid(None)
 
-    def _set_car_uuid(self, uuid: UUID) -> UUID:
+    def _set_car_uuid(self, uuid: UUID) -> None:
         self.car_uuid = uuid
-        return self.car_uuid
 
-    def _set_car_model(self, model: str) -> str:
+    def _set_car_model(self, model: str) -> None:
         self.car_model = model
-        return self.car_model
 
-    def _set_car_number(self, number: str) -> str:
+    def _set_car_number(self, number: str) -> None:
         RUS_LETTERS = "АВЕКМНОРСТУХ"
 
         pattern = re.compile(
@@ -46,36 +44,31 @@ class Car:
 
         if pattern.match(number):
             self.car_number = number
-            return self.car_number
 
         raise PlateNumberFormatInvalid("Invalid plate number format")
 
-    def _set_car_status(self, status: CarStatus) -> CarStatus:
+    def _set_car_status(self, status: CarStatus) -> None:
         if status != CarStatus.FREE:
             raise CarStatusInvalid("The car must be created with the status FREE only.")
 
         self.car_status = status
-        return self.car_status
 
-    def _set_created_at(self, created_at: datetime) -> datetime:
+    def _set_created_at(self, created_at: datetime) -> None:
         self.created_at = created_at
-        return self.created_at
 
-    def _set_updated_at(self, updated_at: datetime) -> datetime:
+    def _set_updated_at(self, updated_at: datetime) -> None:
         self.updated_at = updated_at
-        return self.updated_at
 
-    def _set_offer_uuid(self, offer_uuid: UUID | None) -> None | UUID:
+    def _set_offer_uuid(self, offer_uuid: UUID | None) -> None:
         self.offer_uuid = offer_uuid
-        return self.offer_uuid
 
     def __post_init__(self) -> None:
-        self.updated_at = self._set_updated_at(self.updated_at)
-        self.created_at = self._set_created_at(self.created_at)
+        self._set_updated_at(self.updated_at)
+        self._set_created_at(self.created_at)
 
-        self.offer_uuid = self._set_offer_uuid(self.offer_uuid)
-        self.car_uuid = self._set_car_uuid(self.car_uuid)
+        self._set_offer_uuid(self.offer_uuid)
+        self._set_car_uuid(self.car_uuid)
 
-        self.car_status = self._set_car_status(self.car_status)
-        self.car_model = self._set_car_model(self.car_model)
-        self.car_number = self._set_car_number(self.car_number)
+        self._set_car_status(self.car_status)
+        self._set_car_model(self.car_model)
+        self._set_car_number(self.car_number)

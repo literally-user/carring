@@ -1,7 +1,6 @@
 from .create import CreateOfferInteractor
-from .expire import ExpireOfferInteractor
 from .dto import OfferDTO
-
+from .expire import ExpireOfferInteractor
 
 __all__ = [
     "CreateOfferInteractor",

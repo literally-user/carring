@@ -1,7 +1,5 @@
-from .user import User
 from .enumerations import (UserPrivilege,
                            UserState)
-
 from .exceptions import (UserStateInvalid,
                          UsernameFormatInvalid,
                          PasswordFormatInvalid,
@@ -9,6 +7,7 @@ from .exceptions import (UserStateInvalid,
 
                          FirstNameFormatInvalid,
                          LastNameFormatInvalid)
+from .user import User
 
 __all__ = [
     'User',

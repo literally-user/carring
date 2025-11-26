@@ -1,8 +1,8 @@
 from datetime import datetime, UTC
 from uuid import uuid4
 
-from src.domain.car import Car, CarStatus
-from src.adapters.storage.car import CarRepository
+from domain.car import Car, CarStatus
+from application.common.repositories import CarRepository
 from .dto import CarDTO
 
 

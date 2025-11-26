@@ -1,8 +1,8 @@
 from uuid import UUID
 
-from .exceptions import UnitsNotFoundError
+from src.adapters.storage.repositories.offer import OfferRepository
 from src.domain.offer import Offer
-from src.adapters.storage.offer import OfferRepository
+from .exceptions import UnitsNotFoundError
 
 
 class ExpireOfferInteractor:
