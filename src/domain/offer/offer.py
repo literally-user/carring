@@ -1,5 +1,5 @@
+from datetime import datetime, timedelta
 from dataclasses import dataclass
-from datetime import datetime
 from uuid import UUID
 
 from .enumerations import OfferStatus
@@ -23,6 +23,9 @@ class Offer:
 
     def expire(self) -> None:
         self._set_offer_status(OfferStatus.EXPIRED)
+
+    def extend(self, extend_time: timedelta) -> None:
+        self.expiration_date += extend_time
 
     def _set_created_at(self, created_at: datetime) -> None:
         self.created_at = created_at
