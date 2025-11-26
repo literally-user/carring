@@ -1,15 +1,13 @@
 from datetime import datetime, UTC
 from uuid import uuid4, UUID
 
-from src.domain.offer import (Offer,
-                              OfferStatus)
+from application.common.repositories import UserRepository, CarRepository
+from application.common.uow import UnitOfWork
+from domain.offer import Offer, OfferStatus
 
-from src.adapters.storage import UnitOfWork
-from src.adapters.storage.user import UserRepository
-from src.adapters.storage.car import CarRepository
-
-from .exceptions import UnitsNotFoundError
 from .dto import OfferDTO
+from .exceptions import UnitsNotFoundError
+
 
 class CreateOfferInteractor:
     def __init__(self, uow: UnitOfWork,

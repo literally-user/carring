@@ -1,24 +1,23 @@
-from typing import Protocol, Any
-from abc import abstractmethod
+from typing import Any
+
+from application.common.uow import UnitOfWork
 
 
-class UnitOfWork(Protocol):
-    @abstractmethod
+class UnitOfWorkImpl(UnitOfWork):
     def commit(self) -> None:
         pass
 
-    @abstractmethod
+    def rollback(self) -> None:
+        pass
+
     def register_dirty(self, model: Any) -> None:
         pass
 
-    @abstractmethod
     def register_clean(self, model: Any) -> None:
         pass
 
-    @abstractmethod
     def register_new(self, model: Any) -> None:
         pass
 
-    @abstractmethod
     def register_delete(self, model: Any) -> None:
         pass
