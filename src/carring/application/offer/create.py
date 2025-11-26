@@ -1,9 +1,9 @@
 from datetime import datetime, UTC
 from uuid import uuid4, UUID
 
-from application.common.repositories import UserRepository, CarRepository
-from application.common.uow import UnitOfWork
-from domain.offer import Offer, OfferStatus
+from carring.application.common.repositories import UserRepository, CarRepository
+from carring.application.common.uow import UnitOfWork
+from carring.domain.offer import Offer, OfferStatus
 
 from .dto import OfferDTO
 from .exceptions import UnitsNotFoundError

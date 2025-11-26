@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from application.common.repositories import UserRepository
-from domain.user import User
+from carring.application.common.repositories import UserRepository
+from carring.domain.user import User
 
 
 class UserRepositoryImpl(UserRepository):

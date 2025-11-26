@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from application.common.repositories import OfferRepository
-from domain.offer import Offer
+from carring.application.common.repositories import OfferRepository
+from carring.domain.offer import Offer
 
 
 class OfferRepositoryImpl(OfferRepository):

@@ -1,6 +1,6 @@
 from typing import Any
 
-from application.common.uow import UnitOfWork
+from carring.application.common.uow import UnitOfWork
 
 
 class UnitOfWorkImpl(UnitOfWork):
