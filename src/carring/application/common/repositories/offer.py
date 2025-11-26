@@ -2,7 +2,7 @@ from abc import abstractmethod
 from typing import Protocol
 from uuid import UUID
 
-from domain.offer import Offer
+from carring.domain.offer import Offer
 
 
 class OfferRepository(Protocol):

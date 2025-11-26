@@ -1,8 +1,8 @@
 from datetime import datetime, UTC
 from uuid import uuid4
 
-from application.common.repositories import UserRepository
-from domain.user import User, UserPrivilege, UserState
+from carring.application.common.repositories import UserRepository
+from carring.domain.user import User, UserPrivilege, UserState
 from .dto import UserDTO
 
 

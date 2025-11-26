@@ -1,8 +1,8 @@
 from datetime import timedelta
 from uuid import UUID
 
-from domain.offer import Offer
-from application.common.repositories import OfferRepository
+from carring.domain.offer import Offer
+from carring.application.common.repositories import OfferRepository
 from .exceptions import UnitsNotFoundError
 
 class ExtendOfferInteractor:

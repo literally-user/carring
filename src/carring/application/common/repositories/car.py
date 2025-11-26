@@ -2,7 +2,7 @@ from abc import abstractmethod
 from typing import Protocol
 from uuid import UUID
 
-from domain.car import Car
+from carring.domain.car import Car
 
 
 class CarRepository(Protocol):

@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from application.common.repositories import CarRepository
-from domain.car import Car
+from carring.application.common.repositories import CarRepository
+from carring.domain.car import Car
 
 
 class CarRepositoryImpl(CarRepository):
