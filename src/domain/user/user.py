@@ -79,7 +79,6 @@ class User:
         if not re.search( r'^[a-zA-Z0-9][a-zA-Z0-9._-]*[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$', email):
             raise EmailFormatInvalid("Email address format is invalid")
         self.email = email
-        return self.email
 
     def _set_created_at(self, created_at: datetime) -> None:
         self.created_at = created_at

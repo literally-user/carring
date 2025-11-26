@@ -1,7 +1,7 @@
 from uuid import UUID
 
-from src.adapters.storage.repositories.offer import OfferRepository
-from src.domain.offer import Offer
+from application.common.repositories import OfferRepository
+from domain.offer import Offer
 from .exceptions import UnitsNotFoundError
 
 
