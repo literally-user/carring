@@ -43,6 +43,8 @@ class CreateOfferInteractor:
             updated_at=datetime.now(UTC),
         )
 
+        offer_model.calculate_price(car.car_class)
+
         car.attach_offer(offer_model.offer_uuid)
         user.attach_offer(offer_model.offer_uuid)
 
