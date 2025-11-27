@@ -1,7 +1,8 @@
 from uuid import UUID
+from typing import Iterable
 
 from carring.application.common.repositories import CarRepository
-from carring.domain.car import Car
+from carring.domain.car import Car, FilterBy
 
 
 class CarRepositoryImpl(CarRepository):
@@ -9,6 +10,9 @@ class CarRepositoryImpl(CarRepository):
         self.connection = connection
 
     def get_by_uuid(self, uuid: UUID) -> Car | None:
+        pass
+
+    def filter_by(self, filter_by_param: FilterBy) -> Iterable[Car] | None:
         pass
 
     def create(self, car: Car) -> None:

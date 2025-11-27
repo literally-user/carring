@@ -4,10 +4,16 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
-from .enumerations import CarStatus
+from .enumerations import CarStatus, CarClass
 from .exceptions import (PlateNumberFormatInvalid,
                          CarStatusInvalid)
 
+@dataclass
+class FilterBy:
+    car_class:  CarClass   | None
+    car_status: CarStatus  | None
+    min_price:  float      | None
+    max_price:  float      | None
 
 @dataclass
 class Car:
@@ -17,6 +23,7 @@ class Car:
     car_number: str
 
     car_status: CarStatus
+    car_class: CarClass
 
     created_at: datetime
     updated_at: datetime
