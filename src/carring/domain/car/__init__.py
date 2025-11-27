@@ -1,5 +1,5 @@
-from .car import Car
-from .enumerations import CarStatus
+from .car import Car, FilterBy
+from .enumerations import CarStatus, CarClass
 
 from .exceptions import (PlateNumberFormatInvalid,
                          CarStatusInvalid)
@@ -7,6 +7,8 @@ from .exceptions import (PlateNumberFormatInvalid,
 __all__ = [
     "Car",
     "CarStatus",
+    "CarClass",
+    "FilterBy",
 
     "PlateNumberFormatInvalid",
     "CarStatusInvalid",
