@@ -2,7 +2,9 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 from uuid import UUID
 
+from carring.domain.car import CarClass
 from .enumerations import OfferStatus
+
 
 @dataclass
 class Offer:
@@ -17,6 +19,8 @@ class Offer:
     created_at: datetime
     updated_at: datetime
 
+    price: float = 0.0
+
     def start_renting(self, car_uuid: UUID, user_uuid: UUID) -> None:
         self._set_car_uuid(car_uuid)
         self._set_user_uuid(user_uuid)
@@ -26,6 +30,11 @@ class Offer:
 
     def extend(self, extend_time: timedelta) -> None:
         self.expiration_date += extend_time
+
+    def calculate_price(self, car_class: CarClass) -> float:
+        price = (((self.created_at.timestamp() + self.expiration_date.timestamp()) * 11) % 10000) * car_class.multiplier
+        self.price = price
+        return self.price
 
     def _set_created_at(self, created_at: datetime) -> None:
         self.created_at = created_at
